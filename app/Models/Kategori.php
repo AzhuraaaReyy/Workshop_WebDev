@@ -10,7 +10,7 @@ class Kategori extends Model
         'nama',
     ];
 
-    public function events()
+    public function event()
     {
         return $this->hasMany(Event::class);
     }

@@ -11,7 +11,9 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',
+        'user_id',
+        'kategori_id',
+        'judul',
         'deskripsi',
         'tanggal',
         'lokasi',
@@ -19,11 +21,28 @@ class Event extends Model
     ];
 
     protected $casts = [
-        'tanggal'
+        'tanggal' => 'date',
+        // atau
+        // 'tanggal' => 'datetime',
     ];
+
+
+
 
     public function Kategori()
     {
         return $this->belongsTo(Kategori::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function tikets()
+    {
+        return $this->hasMany(Tiket::class);
+    }
+    public function order()
+    {
+        return $this->hasMany(Order::class);
     }
 }

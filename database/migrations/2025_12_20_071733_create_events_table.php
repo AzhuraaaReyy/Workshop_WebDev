@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('lokasi');
             $table->string('gambar');
-            $table->string('tanggal');
+            $table->dateTime('tanggal');
             $table->timestamps();
         });
     }
