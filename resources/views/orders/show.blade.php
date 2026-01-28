@@ -16,7 +16,7 @@
                         alt="{{ $order->event?->judul ?? 'Event' }}"
                         class="w-full object-cover mb-2" />
                     <h2 class="font-semibold text-lg">{{ $order->event?->judul ?? 'Event' }}</h2>
-                    <p class="text-sm text-gray-500 mt-1">{{ $order->event?->lokasi ?? '' }}</p>
+                    <p class="text-sm text-gray-500 mt-1">{{ $order->event?->lokasi->nama_lokasi ?? '' }}</p>
                 </div>
                 <div class="card-body lg:w-2/3">
 

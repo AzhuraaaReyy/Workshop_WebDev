@@ -4,20 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Kategori;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 
 class EventsController extends Controller
 {
     public function index()
     {
-        $events = Event::with('kategori')->get();
+        $events = Event::with(['kategori', 'lokasi'])->get();
         return view('events.events', compact('events'));
     }
 
     public function create()
     {
         $categories = Kategori::all();
-        return view('events.create_events', compact('categories'));
+        $lokasi = Lokasi::all();
+        return view('events.create_events', compact('categories', 'lokasi'));
     }
     public function store(Request $request)
     {
@@ -25,7 +27,7 @@ class EventsController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'tanggal' => 'required|date',
-            'lokasi' => 'required|string|max:255',
+            'lokasi_id' => 'required|exists:lokasis,id',
             'kategori_id' => 'required|exists:kategoris,id',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -48,9 +50,10 @@ class EventsController extends Controller
     {
         $event = Event::findOrFail($id);
         $categories = Kategori::all();
+        $lokasi = Lokasi::all();
         $tickets = $event->tikets;
 
-        return view('events.eventshow', compact('event', 'categories', 'tickets'));
+        return view('events.eventshow', compact('event', 'categories', 'tickets', 'lokasi'));
     }
 
 
@@ -58,7 +61,8 @@ class EventsController extends Controller
     {
         $event = Event::findOrFail($id);
         $categories = Kategori::all();
-        return view('events.update_events', compact('event', 'categories'));
+        $lokasi = Lokasi::all();
+        return view('events.update_events', compact('event', 'categories', 'lokasi'));
     }
 
 
@@ -71,7 +75,7 @@ class EventsController extends Controller
                 'judul' => 'required|string|max:255',
                 'deskripsi' => 'required|string',
                 'tanggal' => 'required|date',
-                'lokasi' => 'required|string|max:255',
+                'lokasi_id' => 'required|exists:lokasis,id',
                 'kategori_id' => 'required|exists:kategoris,id',
                 'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
@@ -96,9 +100,9 @@ class EventsController extends Controller
         return redirect()->route('admin.events.index')->with('success', 'Kategori berhasil dihapus.');
     }
 
-      public function lihat(Event $event)
+    public function lihat(Event $event)
     {
-        $event->load(['tikets', 'kategori', 'user']);
+        $event->load(['tikets', 'kategori', 'user', 'lokasi']);
 
         return view('events.show', compact('event'));
     }

@@ -22,7 +22,7 @@ class OrderController extends Controller
     }
     public function show(Order $order)
     {
-        $order->load('detailOrders.tiket', 'event');
+        $order->load('detailOrders.tiket', 'event.lokasi');
         return view('orders.show', compact('order'));
     }
 

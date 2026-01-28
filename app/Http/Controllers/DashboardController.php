@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Kategori;
+use App\Models\Lokasi;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,10 @@ class DashboardController extends Controller
     {
         $categories = Kategori::all();
 
-        $eventsQuery = Event::withMin('tikets', 'harga')
-            ->orderBy('tanggal', 'asc');
+
+        $eventsQuery = Event::with(['lokasi', 'tikets' => function ($q) {
+            $q->orderBy('harga', 'asc');
+        }])->withMin('tikets', 'harga')->orderBy('tanggal', 'asc');
 
         if ($request->has('kategori') && $request->kategori) {
             $eventsQuery->where('kategori_id', $request->kategori);

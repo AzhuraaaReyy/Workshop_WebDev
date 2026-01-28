@@ -17,84 +17,34 @@ class EventSeeder extends Seeder
             [
                 'user_id' => 2,
                 'kategori_id' => 1,
+                'lokasi_id' => 1,
                 'judul' => 'Konser Musik Rock',
                 'deskripsi' => 'Nikmati Malam Penuh Energi dengan Band Rock Terkenal',
-                'lokasi' => 'Stadion Utama',
+
                 'gambar' => 'rock.jpg',
                 'tanggal' => '2024-08-15 19:00:00',
             ],
             [
                 'user_id' => 2,
                 'kategori_id' => 2,
+                'lokasi_id' => 2,
                 'judul' => 'Pameran Seni Kontemporer',
                 'deskripsi' => 'Jelajahi karya seni modern dari seniman lokal dan international',
-                'lokasi' => 'Galeri Seni Kota',
+
                 'gambar' => 'pameran.jpg',
                 'tanggal' => '2024-09-10 10:00:00',
             ],
             [
                 'user_id' => 2,
                 'kategori_id' => 3,
+                'lokasi_id' => 3,
                 'judul' => 'Festival Makanan Internasional',
                 'deskripsi' => 'Cicipi berbagai hidangan lezat dari seluruh dunia.',
-                'lokasi' => 'Taman Kota',
+
                 'gambar' => 'festival.jpg',
                 'tanggal' => '2024-10-05 12:00:00',
             ],
-            [
-                'user_id' => 2,
-                'kategori_id' => 3,
-                'judul' => 'Festival Makanan Internasional',
-                'deskripsi' => 'Cicipi berbagai hidangan lezat dari seluruh dunia.',
-                'lokasi' => 'Taman Kota',
-                'gambar' => 'festival.jpg',
-                'tanggal' => '2024-10-05 12:00:00',
-            ],
-            [
-                'user_id' => 2,
-                'kategori_id' => 3,
-                'judul' => 'Festival Makanan Internasional',
-                'deskripsi' => 'Cicipi berbagai hidangan lezat dari seluruh dunia.',
-                'lokasi' => 'Taman Kota',
-                'gambar' => 'festival.jpg',
-                'tanggal' => '2024-10-05 12:00:00',
-            ],
-            [
-                'user_id' => 2,
-                'kategori_id' => 3,
-                'judul' => 'Festival Makanan Internasional',
-                'deskripsi' => 'Cicipi berbagai hidangan lezat dari seluruh dunia.',
-                'lokasi' => 'Taman Kota',
-                'gambar' => 'festival.jpg',
-                'tanggal' => '2024-10-05 12:00:00',
-            ],
-            [
-                'user_id' => 2,
-                'kategori_id' => 3,
-                'judul' => 'Festival Makanan Internasional',
-                'deskripsi' => 'Cicipi berbagai hidangan lezat dari seluruh dunia.',
-                'lokasi' => 'Taman Kota',
-                'gambar' => 'festival.jpg',
-                'tanggal' => '2024-10-05 12:00:00',
-            ],
-            [
-                'user_id' => 2,
-                'kategori_id' => 3,
-                'judul' => 'Festival Makanan Internasional',
-                'deskripsi' => 'Cicipi berbagai hidangan lezat dari seluruh dunia.',
-                'lokasi' => 'Taman Kota',
-                'gambar' => 'festival.jpg',
-                'tanggal' => '2024-10-05 12:00:00',
-            ],
-            [
-                'user_id' => 2,
-                'kategori_id' => 3,
-                'judul' => 'Festival Makanan Internasional',
-                'deskripsi' => 'Cicipi berbagai hidangan lezat dari seluruh dunia.',
-                'lokasi' => 'Taman Kota',
-                'gambar' => 'festival.jpg',
-                'tanggal' => '2024-10-05 12:00:00',
-            ]
+
         ];
         foreach ($event as $event) {
             Event::create($event);

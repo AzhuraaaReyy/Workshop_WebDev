@@ -10,6 +10,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HistoriesController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TiketController;
 
@@ -28,6 +29,7 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->name('register.tambah');
+Route::get('/detailevent/{event}', [EventsController::class, 'lihat'])->name('events.show');
 
 
 Route::middleware('auth')->group(function () {
@@ -38,12 +40,13 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/detailevent/{event}', [EventsController::class, 'lihat'])->name('events.show');
+
 
 
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'home'])->name('dashboard');
     Route::resource('categories', KategoriController::class);
+    Route::resource('lokasi', LokasiController::class);
     Route::resource('events', EventsController::class);
     Route::resource('tickets', TiketController::class);
     Route::get('/histories', [HistoryController::class, 'index'])->name('histories.index');

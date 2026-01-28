@@ -54,8 +54,16 @@
                         <label class="label">
                             <span class="label-text font-semibold">Lokasi</span>
                         </label>
-                        <input type="text" name="lokasi" placeholder="Contoh: Stadion Utama"
-                            class="input input-bordered w-full" value="{{ $event->lokasi }}" disabled required />
+                        <select name="lokasi_id" class="select select-bordered w-full" required disabled>
+                            <option value="" disabled selected>Pilih Lokasi</option>
+                            @foreach ($lokasi as $lokal)
+                            <option value="{{ $lokal->id }}"
+                                {{ $lokal->id == $event->lokasi_id ? 'selected' : '' }}>
+                                {{ $lokal->nama_lokasi }}
+                            </option>
+                            @endforeach
+
+                        </select>
                     </div>
 
                     <!-- Kategori -->
